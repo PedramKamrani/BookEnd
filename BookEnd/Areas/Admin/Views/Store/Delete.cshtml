@@ -1,0 +1,21 @@
+﻿@model BookEnd.Models.BookStor
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>حذف کتاب<span>:@Model.Title</span></h2>
+
+    <form asp-action="Deleted" method="post">
+        <div class="row">
+            <input type="hidden" asp-for="BookId"/>
+            <div class="col-md-1">
+                <input type="submit" value="حذف شود" class="btn btn-danger" />
+            </div>
+            <div class="col-md-1">
+                <a asp-action="Index" class="btn btn-info">برگشت به عقب</a>
+            </div>
+        </div>
+    </form>
+
+

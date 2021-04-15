@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BookEnd.Models.ViewModels.TreeViewModel>
+
+
+@foreach (var item in Model)
+{
+    <li>
+        <input type="checkbox" /> @item.CategoryName
+        <ul>
+            <li>
+                @await Html.PartialAsync("_Sub", item.SubCategores);
+            </li>
+            
+        </ul>
+    </li>
+
+}
+

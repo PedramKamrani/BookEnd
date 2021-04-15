@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BookEnd.Models.BookStor>
+@{
+    ViewData["Title"] = "NewPruodct";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2 id="New" class="text-center text-white bg bg-dark" style="padding:30px;margin-right:120px;margin-left:120px">تازه ترین ها</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem; margin-top:30px;">
+                @*@if (item.Image == null)
+                {
+                    <img class="card-img-top" src="~/images/logo-header.png" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                }*@
+                <div class="card-body">
+                    <p class="card-text text-right"><span>نام:</span>@item.Title</p>
+                    <p class="card-text text-right" style="font-family:'B Yekan'"><span>قیمت:</span>@item.Price<span style="margin:3px">تومان</span></p>
+                </div>
+                <a asp-action="Detail" asp-route-id="@item.BookId" class="btn btn-info btn-icon"><i class="fa fa-eye text-white"></i></a>
+
+            </div>
+        </div>
+    }
+</div>
+

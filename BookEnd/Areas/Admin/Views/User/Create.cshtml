@@ -1,0 +1,14 @@
+﻿@model BookEnd.Areas.Identity.Data.BookUser
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" action="Create">
+    <input asp-for="Email" placeholder="email"/>
+    <input asp-for="PasswordHash" placeholder="pasword"/>
+    <input type="submit" value="ok"/>
+
+</form>
+

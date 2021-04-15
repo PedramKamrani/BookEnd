@@ -1,0 +1,32 @@
+﻿@model BookEnd.Models.ViewModels.SubCategory
+
+
+@foreach (var item in Model.Categores)
+{
+    <ul>
+        <li>
+            @if (Model.Category != null)
+            {
+                if (Model.Category.Contains(item.CategoryID))
+                {
+                    <input type="checkbox" value="@item.CategoryID" checked /> @item.CategoryName
+                }
+                else
+                {
+                    <input type="checkbox" value="@item.CategoryID" /> @item.CategoryName
+                }
+            }
+            else
+            {
+                <input type="checkbox" value="@item.CategoryID" /> @item.CategoryName
+            }
+
+
+            @{ Model.Categores = item.SubCategores;}
+            @await Html.PartialAsync("_Sub", Model)
+
+        </li>
+    </ul>
+
+}
+

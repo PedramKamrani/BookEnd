@@ -1,0 +1,58 @@
+﻿@model BookEnd.Models.ViewModels.Sining
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sining</title>
+</head>
+<body>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="Sining" method="post">
+        <div class="card container">
+            <div class="card-header bg bg-primary text-white">
+                ورود به سایت
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 form-group">
+                    <input asp-for="UserName" class="form-control" placeholder="نام کاربری" />
+                    <span asp-validation-for="UserName"></span>
+                </div>
+                <div class="col-md-12 form-group">
+                    <input asp-for="Password" class="form-control" placeholder="رمزعبور" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="col-md-12 form-group">
+                    <label class="form-control-label" asp-for="CaptchaCode"></label>
+                    <a id="GenerateCapcha" class="pr-2 text-primary" style="cursor:pointer;"><i class="fa fa-redo" style="font-size:12px" aria-hidden="true"></i></a>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <img id="img-captcha" src="~/get-captcha-image" />
+                        </div>
+                        <input type="text" class="form-control" placeholder="کد امنیتی" asp-for="CaptchaCode" maxlength="4" />
+                    </div>
+                    <span asp-validation-for="CaptchaCode" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <input type="submit" value="ورود" class="form-control btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    $("#GenerateCapcha,#img-captcha").click(function () {
+        d = new Date();
+        $("#img-captcha").attr("src","/get-captcha-image?"+d.getTime())
+    });
+</script>
+

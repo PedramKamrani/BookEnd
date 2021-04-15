@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>فروشگاه کتاب </title>
+    <link rel="stylesheet" href="/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="/select2/dist/css/select2.css" rel="stylesheet" />
+    <link href="/css/bootstrap-fileinput.css" rel="stylesheet" />
+    <link href="/css/TreeView.css" rel="stylesheet" />
+    <link href="~/css/Footer/default.css" rel="stylesheet" />
+    <link href="~/css/Footer/style1.css" />
+    <link href="~/css/Footer/style_1366.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/popper.js/popper.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/chart.js/chart.min.js"></script>
+    <script src="/js/carbon.js"></script>
+    <script src="/js/demo.js"></script>
+
+    <script src="/select2/dist/js/select2.min.js"></script>
+    <script src="/select2/dist/js/select2.full.js"></script>
+    <script src="/js/bootstrap-fileinput.js"></script>
+    <script src="/js/TreeView.js"></script>
+    <script src="~/js/Footer/jquery-3.3.1.min.js"></script>
+
+</head>
+<body class="sidebar-fixed header-fixed">
+    <div class="page-wrapper">
+        <nav class="navbar page-header">
+            <div>
+                <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/logo-header.png" alt="logo" height="45">
+                    فروشگاه کتاب 
+                </a>
+                <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    
+                </li>
+                <partial name="_LoginPartial"/>
+               
+
+            </ul>
+        </nav>
+        <div class="main-container">
+            <div class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul class="nav">
+                        <li class="nav-title">پنل مدیریت</li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <i class="icon icon-speedometer"></i> داشبورد
+                            </a>
+                        </li>
+                       
+                        <partial name="_sinin"/>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content">
+                @RenderBody()
+            </div>
+            <div class="modal " id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+    <script>
+
+        // for select2
+        $(".select2").select2({
+            placeholder: "انتخاب کنید"
+        });
+
+        // for TreeView
+        $('.demo1').bonsai();
+
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+<partial name="_Footer"/>
+</html>

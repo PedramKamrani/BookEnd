@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BookEnd.Models.ViewModels.RoleManagerViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<a class="btn btn-primary" asp-action="AddRole">اضافه نقش</a>
+<div class="container">
+    <form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ایدی</th>
+                    <th>تعداد</th>
+                    <th>نام</th>
+                    <th>توضیحات</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdR</td>
+                        <td><i class="fa fa-user">@item.UsersCount</i></td>
+                        <td>@item.NameR</td>
+                        <td>@item.DiscriptionR</td>
+                        <td>
+                            <a asp-action="DeleteRole" asp-route-id="@item.IdR"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </form>
+</div>
+

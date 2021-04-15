@@ -1,0 +1,111 @@
+﻿@model BookEnd.Models.ViewModels.RegisterViewModel
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header text-dark" style="background-color:#b200ff">
+            فرم عضویت در سایت
+        </div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Register" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BirthDay"></label>
+                            <input asp-for="BirthDay" class="form-control" />
+                            <span asp-validation-for="BirthDay" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Family"></label>
+                            <input asp-for="Family" class="form-control" />
+                            <span asp-validation-for="Family" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="float-left">
+                            <button type="submit" class="btn btn-success" style="margin-top:40px;padding:20px;padding-right:35px;border:60px">عضویت</button>
+                        </div>
+                    </div>
+                 
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    $("#BirthDate").MdPersianDateTimePicker({
+         targetTextSelector:"#InputBirthDate",
+         placement:'top',
+    });
+
+    $(document).ready(function()
+    {
+     //Persian character and numbers (and space!)
+     Inputmask.extendDefinitions({
+        'f': {
+            validator: "[۰-۹\u060C-\u0638\u0639-\u0648\u06A9\u06AF\u06CC\u067E\u0686\u064A\u0649\u0626\u0698 ]",
+            cardinality: 1
+        },
+
+        'n':
+        {
+           validator:"[1-9]",
+        },
+
+        'm':
+        {
+            validator:"[۰-۹]",
+        },
+
+        'z':
+        {
+           validator:"[۱-۹]",
+        } 
+     });
+
+     $("#InputBirthDate").inputmask("(n999|zmmm)/(0n|10|11|12|۰z|۱۰|۱۱|۱۲)/(0n|19|29|30|31|۰z|۱m|۲m|۳۰|۳۱)",{"placeholder":"_"});
+     $("#InputName").inputmask( "f{*}");
+
+    });
+</script>

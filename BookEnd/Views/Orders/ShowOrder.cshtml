@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BookEnd.Models.ViewModels.ShowOrder>
+@{
+    ViewData["Title"] = "ShowOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="text-center">نمایش فاکتور</h1>
+<hr />
+
+<div class="col-8" style="margin-right:150px">
+    @{int row = 1; }
+    <table class="table table-bordered table-striped" style="direction:rtl;margin-left:150px">
+        <tr>
+            <th>#</th>
+            <th>نام محصول</th>
+
+            <th>تعداد</th>
+            <th>قیمت</th>
+            <th>جمع</th>
+            <th>وضعیت</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@row</td>
+                <td>
+                    @item.ProductName
+                </td>
+                <td>@item.Count</td>
+
+                <td>@item.Price</td>
+                <td>@item.Sum</td>
+                <td>
+
+                    @if (item.IsFainaly == true)
+                    {
+                        <span class="bg bg-success ">پرداخت شده</span>
+                    }
+                    else
+                    {
+                        <span >پرداخت نشده</span>
+                    }
+
+                </td>
+
+
+              <td>
+
+
+                  <a class="btn btn-sm btn-success" href="/Orders/Command/@item.OrderDetailId?command=up">افزایش</a>
+                    <a class="btn btn-sm btn-warning" href="/Orders/Command/@item.OrderDetailId?command=down">کاهش</a>
+                    <a class="btn btn-sm btn-danger" asp-controller="Orders" asp-action="Delete" asp-route-id="@item.OrderDetailId">
+                        حذف
+                    </a>
+                </td>
+            </tr>
+
+            row += 1;
+        }
+        <tr>
+            <td colspan="5">جمع کل : </td>
+            <td colspan="2">
+                @Model.Sum(s => s.Sum).ToString("#,0 تومان")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td colspan="3">
+                <a class="btn btn-primary btn-block" asp-controller="Orders" asp-action="Payment">تایید و پرداخت نهایی</a>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+

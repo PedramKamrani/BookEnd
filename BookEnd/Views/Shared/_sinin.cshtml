@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BookEnd.Areas.Identity.Data
+@inject SignInManager<BookUser> SignInManager
+@inject UserManager<BookUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div id="logoutForm" class="navbar-right">
+        <div class="nav-item nav-dropdown">
+            <a href="#" class="nav-link nav-dropdown-toggle">
+                <i class="icon icon-target"></i> مدیریت کتاب ها <i class="fa fa-caret-left"></i>
+            </a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a style="color:wheat" asp-area="Admin" asp-controller="Store" asp-action="Index" class="nav-link">
+                        <i class="icon icon-target"></i> مشاهده کتاب ها
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a style="color:wheat" asp-area="Admin" asp-controller="Store" asp-action="Creat" class="nav-link">
+                        <i class="icon icon-target"></i> افزودن کتاب جدید
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" style="margin-right:50px">
+        <li><a asp-action="NewPruodct" asp-controller="Home">محصولات جدید</a></li>
+    </ul>
+}
